@@ -1,16 +1,18 @@
+import fetch from "node-fetch";
+
 console.log('Conexion.........');
 
-function runApiConsultarId(){
+function runApiConsultarId() {
     const id = document.querySelector("#id").value;
-        fetch(`http://localhost:4040/contactos/${id}`, {
-        method: 'GET',
-        // body: JSON.stringify(datos),
-        headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-         .then((response) => response.json())
-         .then((json) => {
+    fetch(`http://localhost:4040/contactos/${id}`, {
+            method: 'GET',
+            // body: JSON.stringify(datos),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then((response) => response.json())
+        .then((json) => {
             console.log(json);
             const id = document.getElementById("numid");
             const nombre = document.getElementById("nombre");
@@ -26,41 +28,43 @@ function runApiConsultarId(){
         });
 };
 
-function runApiModificarId(){
-   
+function runApiModificarId() {
+
     const actid = document.querySelector("#actid").value;
     console.log(actid);
     const act = {
-        nombre : document.getElementById("actnombre").value,
-        telefono : parseInt(document.getElementById("acttelefono").value)
+        nombre: document.getElementById("actnombre").value,
+        telefono: parseInt(document.getElementById("acttelefono").value)
     }
     console.log(act.nombre, act.telefono);
     fetch(`http://localhost:4040/act/${actid}`, {
-        method: 'PUT',
-        body: JSON.stringify(act),
-        headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
+            method: 'PUT',
+            body: JSON.stringify(act),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
         .then((response) => response.json())
-        .then((json) => {console.log(json);});
+        .then((json) => {
+            console.log(json);
+        });
 };
 
 
-function runApiEliminarId(){
-    
+function runApiEliminarId() {
+
     const elimiid = document.querySelector("#elimid").value;
     console.log(elimiid);
 
     fetch(`http://localhost:4040/delete/${elimiid}`, {
-        method: 'DELETE',
-        // body: JSON.stringify(act),
-        headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
+            method: 'DELETE',
+            // body: JSON.stringify(act),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
         .then((response) => response.json())
-        .then((json) => {console.log(json);});
+        .then((json) => {
+            console.log(json);
+        });
 }
-
-

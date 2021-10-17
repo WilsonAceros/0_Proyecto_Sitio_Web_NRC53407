@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 // evento submit
 const datos = {
     nombre: "",
